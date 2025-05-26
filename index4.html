@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Local Community Event Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <h1>Community Event Portal</h1>
+
+  <div id="filters">
+    <label for="categoryFilter">Filter by Category:</label>
+    <select id="categoryFilter">
+      <option value="">All</option>
+      <option value="Music">Music</option>
+      <option value="Workshop">Workshop</option>
+      <option value="Sports">Sports</option>
+    </select>
+
+    <label for="locationFilter">Filter by Location:</label>
+    <select id="locationFilter">
+      <option value="">All</option>
+      <option value="Park">Park</option>
+      <option value="Community Hall">Community Hall</option>
+      <option value="Auditorium">Auditorium</option>
+    </select>
+
+    <label for="searchInput">Search by Name:</label>
+    <input type="text" id="searchInput" placeholder="Event name..." />
+  </div>
+
+  <div id="loading" style="display:none;">Loading events...</div>
+  <div id="eventsContainer"></div>
+
+  <h2>Register for Event</h2>
+  <form id="registrationForm">
+    <input type="text" name="userName" placeholder="Your Name" required />
+    <input type="email" name="userEmail" placeholder="Your Email" required />
+    <select name="eventSelect" required>
+      <option value="">Select Event</option>
+    </select>
+    <button type="submit" id="registerBtn">Register</button>
+    <div id="formError" style="color: red;"></div>
+    <div id="formSuccess" style="color: green;"></div>
+  </form>
+
+  <script src="main.js"></script>
+</body>
+</html>
