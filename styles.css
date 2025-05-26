@@ -1,236 +1,119 @@
-/* Reset and universal styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Base body styling */
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #333;
-  line-height: 1.6;
-}
-
-/* Header styles */
-#mainHeader {
-  background: linear-gradient(to right, #6a11cb, #2575fc);
-  color: white;
-  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f7f9fc;
   padding: 20px;
-  margin-top: 20px;
-  border-radius: 10px;
-}
-
-/* Section: News Article - Multi-column layout */
-.news-article {
-  column-count: 2;
-  column-gap: 30px;
-  column-rule: 1px solid gray;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
-  margin: 30px auto;
   max-width: 900px;
-  border-radius: 10px;
+  margin: auto;
 }
 
-/* Event Cards */
-.events-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
+h1, h2 {
+  color: #2c3e50;
 }
 
-.eventCard {
-  background: #ffffffdd;
-  border: 2px solid #e0e0e0;
-  padding: 20px;
-  border-radius: 12px;
-  width: 280px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.eventCard:hover {
-  transform: scale(1.03);
-}
-
-/* Event description */
-.description {
-  font-style: italic;
-  margin: 10px 0;
-}
-
-/* Event details list */
-.eventDetails {
-  list-style-type: square;
-  list-style-position: inside;
-  padding-left: 0;
-  margin-top: 10px;
-}
-
-.eventDetails li {
-  margin-bottom: 5px;
-}
-
-/* Link styling */
-a:link {
-  color: #1d3557;
-  text-decoration: none;
-}
-a:visited {
-  color: #7b2cbf;
-}
-a:hover {
-  text-decoration: underline;
-  color: #e63946;
-}
-a:active {
-  color: #f77f00;
-}
-
-/* Table styles */
-.admin-section {
-  padding: 20px;
-  background-color: #fafafa;
-  border-radius: 10px;
-  margin: 30px auto;
-  max-width: 90%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: center;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-th {
-  background-color: #3498db;
-  color: white;
-}
-
-/* Contact form section */
-.contact-section {
-  background-color: rgba(255, 255, 255, 0.92);
-  padding: 25px;
-  margin: 40px auto;
-  max-width: 600px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.contact-section h3 {
-  text-align: center;
+#filters {
   margin-bottom: 20px;
 }
 
-.contact-section label {
-  color: #2c3e50;
+#filters label {
+  margin-right: 10px;
   font-weight: 600;
 }
 
-.contact-section input[type="text"],
-.contact-section input[type="email"] {
-  width: 100%;
-  padding: 12px;
-  margin-top: 5px;
-  border: 1.5px solid #ccc;
-  border-radius: 6px;
-  background-color: #fff;
-  color: #333;
+#filters select,
+#filters input[type="text"] {
+  padding: 7px;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 150px;
 }
 
-.contact-section input:focus {
-  outline: 3px solid #3498db;
-  background-color: #fdfdfd;
+#eventsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
 }
 
-.contact-section input[type="submit"] {
-  background-color: #3498db;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  margin-top: 15px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.contact-section input[type="submit"]:hover {
-  background-color: #2980b9;
-}
-
-/* Navigation bar */
-.main-nav {
-  background-color: rgba(0, 0, 0, 0.7);
-  margin-top: 40px;
-  padding: 10px 0;
+.event-card {
+  background: white;
+  padding: 15px;
   border-radius: 10px;
-}
-
-.main-nav ul {
-  list-style: none;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+  transition: box-shadow 0.3s ease;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.main-nav li {
-  margin: 10px 15px;
+.event-card:hover {
+  box-shadow: 0 8px 16px rgb(0 0 0 / 0.2);
 }
 
-.main-nav a {
+.event-card h3 {
+  margin: 0 0 10px 0;
+  color: #34495e;
+}
+
+.event-info {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+button.register-btn {
+  background-color: #007bff;
   color: white;
-  text-decoration: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  border: none;
   font-weight: bold;
-  padding: 8px 12px;
-  transition: background 0.3s;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.main-nav a:hover {
-  background-color: #ffffff22;
-  border-radius: 6px;
+button.register-btn:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
 }
 
-/* Media Queries: Responsive Design */
-@media screen and (max-width: 768px) {
-  .events-list {
-    flex-direction: column;
-    align-items: center;
-  }
+button.register-btn:hover:not(:disabled) {
+  background-color: #0056b3;
+}
 
-  .news-article {
-    column-count: 1;
-  }
+#registrationForm {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
 
-  .main-nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
+#registrationForm input,
+#registrationForm select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 220px;
+}
 
-  .main-nav li {
-    margin: 8px 0;
-  }
+#registerBtn {
+  padding: 10px 20px;
+}
 
-  table, thead, tbody, th, td, tr {
-    font-size: 14px;
-  }
+#loading {
+  font-size: 18px;
+  color: #555;
+  text-align: center;
+  margin: 20px 0;
+}
 
-  .contact-section input[type="text"],
-  .contact-section input[type="email"] {
-    font-size: 14px;
-  }
+#formError {
+  width: 100%;
+  font-weight: 600;
+}
+
+#formSuccess {
+  width: 100%;
+  font-weight: 600;
 }
