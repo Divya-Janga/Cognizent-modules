@@ -1,0 +1,236 @@
+/* Reset and universal styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base body styling */
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header styles */
+#mainHeader {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+/* Section: News Article - Multi-column layout */
+.news-article {
+  column-count: 2;
+  column-gap: 30px;
+  column-rule: 1px solid gray;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin: 30px auto;
+  max-width: 900px;
+  border-radius: 10px;
+}
+
+/* Event Cards */
+.events-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.eventCard {
+  background: #ffffffdd;
+  border: 2px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 12px;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.eventCard:hover {
+  transform: scale(1.03);
+}
+
+/* Event description */
+.description {
+  font-style: italic;
+  margin: 10px 0;
+}
+
+/* Event details list */
+.eventDetails {
+  list-style-type: square;
+  list-style-position: inside;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.eventDetails li {
+  margin-bottom: 5px;
+}
+
+/* Link styling */
+a:link {
+  color: #1d3557;
+  text-decoration: none;
+}
+a:visited {
+  color: #7b2cbf;
+}
+a:hover {
+  text-decoration: underline;
+  color: #e63946;
+}
+a:active {
+  color: #f77f00;
+}
+
+/* Table styles */
+.admin-section {
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 10px;
+  margin: 30px auto;
+  max-width: 90%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  background-color: #3498db;
+  color: white;
+}
+
+/* Contact form section */
+.contact-section {
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 25px;
+  margin: 40px auto;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contact-section h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-section label {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.contact-section input[type="text"],
+.contact-section input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #333;
+}
+
+.contact-section input:focus {
+  outline: 3px solid #3498db;
+  background-color: #fdfdfd;
+}
+
+.contact-section input[type="submit"] {
+  background-color: #3498db;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  margin-top: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.contact-section input[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+/* Navigation bar */
+.main-nav {
+  background-color: rgba(0, 0, 0, 0.7);
+  margin-top: 40px;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.main-nav li {
+  margin: 10px 15px;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  transition: background 0.3s;
+}
+
+.main-nav a:hover {
+  background-color: #ffffff22;
+  border-radius: 6px;
+}
+
+/* Media Queries: Responsive Design */
+@media screen and (max-width: 768px) {
+  .events-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .news-article {
+    column-count: 1;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-nav li {
+    margin: 8px 0;
+  }
+
+  table, thead, tbody, th, td, tr {
+    font-size: 14px;
+  }
+
+  .contact-section input[type="text"],
+  .contact-section input[type="email"] {
+    font-size: 14px;
+  }
+}
