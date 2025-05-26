@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap 5 Sass Customization</title>
+  <!-- Link to compiled CSS -->
+  <link rel="stylesheet" href="css/main.css" />
+  <!-- Bootstrap JS bundle (for dismissible alerts, if needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body class="p-4">
+
+  <h1 class="mb-4">Bootstrap 5 Sass Customization Example</h1>
+
+  <button id="btnPrimary" class="btn btn-custom-primary mb-3">Show Custom Primary Alert</button>
+  <button id="btnSecondary" class="btn btn-custom-secondary mb-3">Show Custom Secondary Alert</button>
+
+  <div id="alertContainer"></div>
+
+  <script>
+    const alertContainer = document.getElementById('alertContainer');
+
+    function createAlert(message, type = 'primary') {
+      // Clear previous alert
+      alertContainer.innerHTML = '';
+      // Create alert div
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+      alertDiv.role = 'alert';
+      alertDiv.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      `;
+      alertContainer.appendChild(alertDiv);
+    }
+
+    document.getElementById('btnPrimary').addEventListener('click', () => {
+      createAlert('This is a customized Bootstrap primary alert!', 'primary');
+    });
+
+    document.getElementById('btnSecondary').addEventListener('click', () => {
+      createAlert('This is a customized Bootstrap secondary alert!', 'secondary');
+    });
+  </script>
+
+</body>
+</html>
