@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Local Community Event Portal</title>
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.5;
+    }
+    nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: darkblue;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    /* Task 3 styles */
+    #welcomeBanner {
+      background-color: #007BFF;
+      color: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+    /* Task 4 styles */
+    table {
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 600px;
+    }
+    table, td {
+      border: 1px solid #ccc;
+      text-align: center;
+      padding: 8px;
+    }
+    .event-img {
+      width: 150px;
+      height: 100px;
+      border: 2px solid #007BFF;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+    }
+    /* Task 5 & 6 Form styles */
+    form {
+      max-width: 500px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #f9f9f9;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    /* Task 7 Video */
+    #videoInvite {
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+    /* Enlarged image style */
+    .enlarged {
+      transform: scale(2);
+      z-index: 10;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Task 1: Navigation -->
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+    <a href="help.html" target="_blank">Help</a>
+  </nav>
+
+  <!-- Main content -->
+  <main>
+    <!-- Task 3: Welcome Message -->
+    <section id="home">
+      <div id="welcomeBanner">
+        Welcome, <span class="highlight">Community Member</span>! 
+        <span style="color:red; font-weight:bold;">Special Offer:</span> Register now and get a free gift!
+      </div>
+    </section>
+
+    <!-- Task 4: Image Gallery -->
+    <section id="events">
+      <h2>Task 4: Past Events Image Gallery</h2>
+      <table>
+        <tr>
+          <td>
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=150&q=80" 
+                 alt="Community Food Festival" title="Community Food Festival" class="event-img" ondblclick="enlargeImage(this)" />
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1520975692524-12f4b1e97d81?auto=format&fit=crop&w=150&q=80" 
+                 alt="Local Art Fair" title="Local Art Fair" class="event-img" ondblclick="enlargeImage(this)" />
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=150&q=80" 
+                 alt="Outdoor Music Concert" title="Outdoor Music Concert" class="event-img" ondblclick="enlargeImage(this)" />
+          </td>
+        </tr>
+        <tr>
+          <td>Community Food Festival</td>
+          <td>Local Art Fair</td>
+          <td>Outdoor Music Concert</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Task 5: Registration Form -->
+    <section>
+      <h2>Task 5: Event Registration Form</h2>
+      <form id="registrationForm" onsubmit="return submitForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required autofocus />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+        <label for="date">Event Date:</label>
+        <input type="date" id="date" name="date" required />
+
+        <label for="eventType">Event Type:</label>
+        <select id="eventType" name="eventType" onchange="showEventFee()" required>
+          <option value="">--Select an event--</option>
+          <option value="food">Food Festival</option>
+          <option value="art">Art Fair</option>
+          <option value="music">Music Concert</option>
+        </select>
+        <div id="eventFee" style="margin-top:5px; font-weight:bold;"></div>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" placeholder="Any special requests or comments"></textarea>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="123-456-7890" onblur="validatePhone()" />
+
+        <button type="submit" onclick="showConfirmation(event)">Register</button>
+        <output id="confirmationMsg" style="display:block; margin-top:10px; font-weight:bold;"></output>
+      </form>
+    </section>
+
+    <!-- Task 6: Feedback Textarea with Key Event -->
+    <section>
+      <h2>Task 6: Event Feedback</h2>
+      <textarea id="feedback" rows="5" placeholder="Give us your feedback" onkeyup="countChars()" onblur="checkFeedback()"></textarea>
+      <div>Characters typed: <span id="charCount">0</span></div>
+    </section>
+
+    <!-- Task 7: Video Invite -->
+    <section>
+      <h2>Task 7: Event Promo Video</h2>
+      <video id="videoInvite" width="600" controls oncanplay="videoReady()">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+      <div id="videoMsg" style="font-weight:bold; margin-top:5px;"></div>
+    </section>
+
+    <!-- Task 8: Preferences -->
+    <section>
+      <h2>Task 8: User Preferences</h2>
+      <button onclick="clearPreferences()">Clear Preferences</button>
+    </section>
+
+    <!-- Task 9: Geolocation -->
+    <section>
+      <h2>Task 9: Find Nearby Events</h2>
+      <button onclick="findNearbyEvents()">Find Nearby Events</button>
+      <div id="geoOutput" style="margin-top:10px; font-weight:bold;"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <!-- Task 1 Footer -->
+  <footer style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 10px;">
+    <small>© 2025 Local City Council</small>
+  </footer>
+
+  <script>
+    // Task 6: Enlarge image on double-click
+    function enlargeImage(img) {
+      if (img.classList.contains('enlarged')) {
+        img.classList.remove('enlarged');
+      } else {
+        // Remove enlarged from other images first
+        document.querySelectorAll('.event-img.enlarged').forEach(i => i.classList.remove('enlarged'));
+        img.classList.add('enlarged');
+      }
+    }
+
+    // Task 5: Submit form & confirmation output
+    function submitForm(event) {
+      event.preventDefault(); // prevent default submission
+
+      // You can add more validation here if needed
+      const name = document.getElementById('name').value;
+      const confirmation = document.getElementById('confirmationMsg');
+      confirmation.textContent = `Thank you, ${name}, for registering!`;
+      console.log('Task 5: Form submitted');
+
+      // Save selected event type to localStorage (Task 8)
+      const eventType = document.getElementById('eventType').value;
+      if(eventType) {
+        localStorage.setItem('preferredEventType', eventType);
+      }
+
+      return false;
+    }
+
+    // Task 6: Show confirmation on submit button click
+    function showConfirmation(event) {
+      // This function is mainly to show alert on button click
+      alert('Your registration is being processed.');
+      console.log('Task 6: Submit button clicked');
+    }
+
+    // Task 6: Phone validation onblur
+    function validatePhone() {
+      const phone = document.getElementById('phone').value;
+      const phonePattern = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/; // e.g. 123-456-7890
+      if (phone && !phonePattern.test(phone)) {
+        alert('Please enter phone number in format 123-456-7890');
+        document.getElementById('phone').focus();
+      }
+      console.log('Task 6: Phone validation triggered');
+    }
+
+    // Task 6: Show event fee on dropdown change
+    function showEventFee() {
+      const eventType = document.getElementById('eventType').value;
+      const feeDiv = document.getElementById('eventFee');
+      let fee = '';
+      switch (eventType) {
+        case 'food':
+          fee = 'Fee: $10';
+          break;
+        case 'art':
+          fee = 'Fee: $5';
+          break;
+        case 'music':
+          fee = 'Fee: $15';
+          break;
+        default:
+          fee = '';
+      }
+      feeDiv.textContent = fee;
+      console.log('Task 6: Event fee displayed:', fee);
+    }
+
+    // Task 6: Count characters in feedback textarea
+    function countChars() {
+      const feedback = document.getElementById('feedback').value;
+      document.getElementById('charCount').textContent = feedback.length;
+      console.log('Task 6: Feedback chars counted:', feedback.length);
+    }
+
+    // Task 6: On feedback blur - simple alert if empty
+    function checkFeedback() {
+      const feedback = document.getElementById('feedback').value;
+      if(feedback.trim() === '') {
+        alert('Please provide feedback!');
+      }
+      console.log('Task 6: Feedback blur triggered');
+    }
+
+    // Task 7: Video oncanplay event
+    function videoReady() {
+      document.getElementById('videoMsg').textContent = 'Video ready to play';
+      console.log('Task 7: Video can play');
+    }
+
+    // Task 7: Warn on page unload if form incomplete
+    window.onbeforeunload = function(e) {
+      const form = document.getElementById('registrationForm');
+      if (form && !form.checkValidity()) {
+        const confirmationMessage = 'You have unsaved changes. Are you sure you want to leave?';
+        e.returnValue = confirmationMessage;
+        return confirmationMessage;
+      }
+    };
+
+    // Task 8: Clear preferences button
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+      document.getElementById('eventType').value = '';
+      document.getElementById('eventFee').textContent = '';
+      console.log('Task 8: Cleared localStorage and sessionStorage');
+      alert('Preferences cleared!');
+    }
+
+    // Task 9: Geolocation button handler
+    function findNearbyEvents() {
+      const output = document.getElementById('geoOutput');
+      output.textContent = 'Locating...';
+
+      if (!navigator.geolocation) {
+        output.textContent = 'Geolocation is not supported by your browser.';
+        console.error('Task 9: Geolocation not supported');
+        return;
+      }
+
+      const options = {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+      };
+
+      navigator.geolocation.getCurrentPosition(success, error, options);
+
+      function success(position) {
+        const lat = position.coords.latitude.toFixed(4);
+        const lon = position.coords.longitude.toFixed(4);
+        output.textContent = `Your location: Latitude ${lat}, Longitude ${lon}`;
+        console.log(`Task 9: Position found: ${lat}, ${lon}`);
+      }
+
+      function error(err) {
+        switch(err.code) {
+          case err.PERMISSION_DENIED:
+            output.textContent = 'Permission denied. Unable to get your location.';
+            console.error('Task 9: Permission denied');
+            break;
+          case err.POSITION_UNAVAILABLE:
+            output.textContent = 'Position unavailable.';
+            console.error('Task 9: Position unavailable');
+            break;
+          case err.TIMEOUT:
+            output.textContent = 'Request timed out.';
+            console.error('Task 9: Timeout');
+            break;
+          default:
+            output.textContent = 'An unknown error occurred.';
+            console.error('Task 9: Unknown error');
+            break;
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
